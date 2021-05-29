@@ -2,6 +2,8 @@ package vistas.listaProveedores;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VistaListaProveedores extends JPanel{
 
@@ -17,6 +19,12 @@ public class VistaListaProveedores extends JPanel{
 
     public VistaListaProveedores() {
         setHeaders();
+        botonAgregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
     private void setHeaders(){
