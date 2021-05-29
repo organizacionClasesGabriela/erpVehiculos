@@ -5,6 +5,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import controlador.Controlador;
 import entidades.Cliente;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.vandeseer.easytable.structure.Table;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
@@ -47,6 +49,18 @@ public class InformeClientes {
         documento.add(tablaClientes);
         documento.close();
         JOptionPane.showMessageDialog(null, "Informe generado correctamente");
+
+        ////////////////////////////////////////////////
+        // ESTA LIBRERIA SE IMPLEMENTARA EN UN FUTURO //
+        ////////////////////////////////////////////////
+
+        /*PDDocument document = new PDDocument();
+        document.save(System.getProperty("user.home") + "/Desktop/Clientes.pdf");
+        document.close();*/
+
+        
+
+
 
     }
 
