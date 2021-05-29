@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         Vista vistaPrincipal = new PrincipalFrame();
 
-        System.out.println("Gakusei desu, supuinjin desu");
+        System.out.println("arigatogozaimashita");
 
     }
 }
