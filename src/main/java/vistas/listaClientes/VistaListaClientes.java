@@ -25,7 +25,7 @@ public class VistaListaClientes extends JPanel{
     private JButton botonImprimirInforme;
 
     private static int idCleinteSeleccionado;
-    private static String nombreCleinteSeleccionado;
+    private static String nombreClienteSeleccionado;
 
     DefaultTableModel model = new DefaultTableModel();
 
@@ -49,7 +49,7 @@ public class VistaListaClientes extends JPanel{
                 int columnaPunto = 0;
                 if (filaPunto > -1){
                     idCleinteSeleccionado = Integer.parseInt(String.valueOf(model.getValueAt(filaPunto, columnaPunto)));
-                    nombreCleinteSeleccionado = (String.valueOf(model.getValueAt(filaPunto, 1)));
+                    nombreClienteSeleccionado = (String.valueOf(model.getValueAt(filaPunto, 1)));
 
                 }
             }
@@ -64,7 +64,7 @@ public class VistaListaClientes extends JPanel{
         botonEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nuevoNombre = JOptionPane.showInputDialog("Introduce el nuevo nombre para " + nombreCleinteSeleccionado);
+                String nuevoNombre = JOptionPane.showInputDialog("Introduce el nuevo nombre para " + nombreClienteSeleccionado);
                 Controlador.updateCliente(idCleinteSeleccionado, nuevoNombre);
                 fillTable();
             }
