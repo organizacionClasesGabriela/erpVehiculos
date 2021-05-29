@@ -2,6 +2,7 @@ package vistas.principal;
 
 import vistas.listaClientes.VistaListaClientes;
 import vistas.listaClientes.VistaListaClientesFrame;
+import vistas.listaProveedores.VistaListaProveedoresFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -42,6 +43,12 @@ public class Principal extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new VistaListaClientesFrame();
+            }
+        });
+        botonProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new VistaListaProveedoresFrame();
             }
         });
     }
