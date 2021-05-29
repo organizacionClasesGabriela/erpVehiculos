@@ -12,6 +12,7 @@ public class Main {
         Vista vistaPrincipal = new PrincipalFrame();
 
         System.out.println("arigatogozaimashita");
+        System.out.println("Gakusei desu");
 
     }
 }
