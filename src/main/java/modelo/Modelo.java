@@ -2,6 +2,7 @@ package modelo;
 
 import bbdd.Conexion;
 import entidades.Cliente;
+import entidades.Proveedor;
 
 import javax.swing.*;
 import java.sql.*;
@@ -13,6 +14,8 @@ public class Modelo {
 
     private static ArrayList<Cliente> listaClientes = new ArrayList<>();
     private static final int NUM_COLS_CLIENTES = 2;
+    private static ArrayList<Proveedor> listaProveedores = new ArrayList<>();
+    private static final int NUM_COLS_PROVEEDORES = 2;
 
     public Modelo() {
 
@@ -41,9 +44,34 @@ public class Modelo {
         }
     }
 
+    private static void saveProveedores(){
+        Connection cn = Conexion.conectar();
+        listaProveedores.clear();
+        String sql = "SELECT idProveedor, nombre FROM proveedor";
+
+        try{
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                int id = Integer.parseInt(String.valueOf(rs.getObject("idProveedor")));
+                String nombre = String.valueOf(rs.getObject("nombre"));
+                listaProveedores.add(new Proveedor(id, nombre));
+            }
+
+        }catch (SQLException ex){
+            Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static ArrayList<Cliente> getListaClientes() {
         saveClientes();
         return listaClientes;
+    }
+
+    public static ArrayList<Proveedor> getListaProveedores(){
+        saveProveedores();
+        return listaProveedores;
     }
 
     public static ArrayList<Cliente> addCliente(String nombre) {
@@ -56,20 +84,13 @@ public class Modelo {
                 pst.setInt(1, 0);
                 pst.setString(2, nombre);
 
-
                 pst.executeUpdate();
                 cn.close();
-
 
             } catch (Exception e) {
                 System.err.println("ERROR al registrar cliente. " + e);
                 JOptionPane.showMessageDialog(null, "ERROR al registrar cliente.\nContacte con el administrador del sistema");
-
             }
-
-
-
-
         }
 
         return getListaClientes();

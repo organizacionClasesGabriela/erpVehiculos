@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import controlador.Controlador;
 import entidades.Proveedor;
 
 public class VistaListaProveedores extends JPanel{
