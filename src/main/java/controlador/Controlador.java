@@ -43,6 +43,6 @@ public class Controlador {
     }
 
     public static ArrayList<Proveedor> updateProveedor(int idProveedor, String nombre){
-        return Modelo.updateProveedor(iProveedor, nombre);
+        return Modelo.updateProveedor(idProveedor, nombre);
     }
 }

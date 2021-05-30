@@ -31,6 +31,12 @@ public class VistaListaProveedores extends JPanel{
                 fillTable();
             }
         });
+        botonEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
     private void setHeaders(){

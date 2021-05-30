@@ -59,6 +59,8 @@ public class Modelo {
                 listaProveedores.add(new Proveedor(id, nombre));
             }
 
+            cn.close();
+
         }catch (SQLException ex){
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -75,14 +77,14 @@ public class Modelo {
     }
 
     public static ArrayList<Cliente> addCliente(String nombre) {
-        if (!(nombre == null) || !(nombre == "")) {
+        if (!(nombre == null) || !nombre.equalsIgnoreCase("")) {
             try {
 
                 Connection cn = Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "insert into cliente values (?, ?)");
                 pst.setInt(1, 0);
-                pst.setString(2, nombre);
+                pst.setString(2, nombre); //Esto no lo entiendo
 
                 pst.executeUpdate();
                 cn.close();
@@ -96,20 +98,54 @@ public class Modelo {
         return getListaClientes();
     }
 
+    public static ArrayList<Proveedor> addProveedor(String nombre){
+        Connection cn = Conexion.conectar();
+        try {
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor VALUES (?, ?)");
+            pst.setInt(1, 0);
+            pst.setString(2, nombre);
+
+            pst.executeUpdate();
+            cn.close();
+
+        } catch (Exception e){
+            System.err.println("ERROR al registrar proveedor. " + e);
+            JOptionPane.showMessageDialog(null, "ERROR al registrar proveedor.\nContacte con el administrador del sistema");
+        }
+
+        return getListaProveedores();
+
+    }
+
     public static ArrayList<Cliente> removeCliente(int idCliente){
         try {
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
                     "delete from cliente where IdCliente = '" + idCliente + "'");
-            int res = pst.executeUpdate();
+            int res = pst.executeUpdate(); //Me pierdo con esto de los int
             cn.close();
-            JOptionPane.showMessageDialog(null, "Cliente Eliminado");
+            JOptionPane.showMessageDialog(null, "Cliente eliminado");
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
         }
         return getListaClientes();
 
+    }
+
+    public static ArrayList<Proveedor> removeProveedor(int idProveedor){
+        Connection cn = Conexion.conectar();
+        PreparedStatement pst = null;
+        try {
+            pst = cn.prepareStatement("DELETE FROM proveedor WHERE IdProveedor = '" + idProveedor + "'");
+            int res = pst.executeUpdate();
+            cn.close();
+            JOptionPane.showMessageDialog(null, "Proveedor eliminado");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return getListaProveedores();
     }
 
     public static ArrayList<Cliente> updateCliente(int idCliente, String nombre){
@@ -128,6 +164,20 @@ public class Modelo {
             throwables.printStackTrace();
         }
         return getListaClientes();
+    }
 
+    public static ArrayList<Proveedor> updateProveedor(int idProveedor, String nombre){
+
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Nombre = ? WHERE IdProveedor = '" + idProveedor +"'");
+            pst.setString(1, nombre);
+            pst.executeUpdate();
+            cn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return getListaProveedores();
     }
 }
