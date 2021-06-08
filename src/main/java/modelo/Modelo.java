@@ -152,8 +152,9 @@ public class Modelo {
         try {
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    "update cliente set Nombre = ? where IdCliente = '" + idCliente + "'");
+                    "update cliente set Nombre = ? where IdCliente = ?");
             pst.setString(1, nombre);
+            pst.setInt(2, idCliente);
             pst.executeUpdate();
             cn.close();
 
