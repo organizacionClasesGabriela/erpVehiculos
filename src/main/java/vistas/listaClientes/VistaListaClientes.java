@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VistaListaClientes extends JPanel{
@@ -29,15 +30,23 @@ public class VistaListaClientes extends JPanel{
 
     DefaultTableModel model = new DefaultTableModel();
 
-    VistaListaClientes(){
+    VistaListaClientes() throws SQLException {
         setHeaders();
         fillTable();
         botonAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombre = String.valueOf(JOptionPane.showInputDialog("Introduce nombre"));
-                Controlador.agregarCliente(nombre);
-                fillTable();
+                try {
+                    Controlador.agregarCliente(nombre);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                try {
+                    fillTable();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
             }
         });
@@ -57,16 +66,32 @@ public class VistaListaClientes extends JPanel{
         botonEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controlador.removeCliente(idClienteSeleccionado);
-                fillTable();
+                try {
+                    Controlador.removeCliente(idClienteSeleccionado);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                try {
+                    fillTable();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
         botonEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nuevoNombre = JOptionPane.showInputDialog("Introduce el nuevo nombre para " + nombreClienteSeleccionado);
-                Controlador.updateCliente(idClienteSeleccionado, nuevoNombre);
-                fillTable();
+                try {
+                    Controlador.updateCliente(idClienteSeleccionado, nuevoNombre);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                try {
+                    fillTable();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
         botonImprimirInforme.addActionListener(new ActionListener() {
@@ -79,6 +104,8 @@ public class VistaListaClientes extends JPanel{
                     ioException.printStackTrace();
                 } catch (DocumentException documentException) {
                     documentException.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
             }
         });
@@ -92,7 +119,7 @@ public class VistaListaClientes extends JPanel{
 
     }
 
-    private void fillTable(){
+    private void fillTable() throws SQLException {
         ArrayList<Cliente> listaClientes = Controlador.getListaClientes();
         model.setRowCount(0); //Limpiar la tabla
         for(Cliente cliente : listaClientes){
