@@ -22,6 +22,12 @@ public class VistaListaClientes extends JPanel{
     private JButton botonEditar;
     private JTable tablaClientes;
     private JPanel panelListaClientes;
+    private JTextField textFieldNombre;
+    private JTextField textFieldApellidos;
+    private JTextField textFieldNIF;
+    private JTextField textFieldEmail;
+    private JTextField textFieldTelefono;
+    private JButton crearNuevoButton;
     private JScrollPane scrollTablaClientes;
     private JButton botonImprimirInforme;
 
