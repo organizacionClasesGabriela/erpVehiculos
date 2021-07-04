@@ -44,7 +44,7 @@ public class Modelo {
         }
     }
 
-    private static void saveProveedores(){
+    private static void saveProveedores() throws SQLException {
         Connection cn = Conexion.conectar();
         listaProveedores.clear();
         String sql = "SELECT idProveedor, nombre FROM proveedor";
@@ -64,11 +64,7 @@ public class Modelo {
         }catch (SQLException ex){
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
-            try {
-                cn.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            cn.close();
         }
     }
 
@@ -77,7 +73,7 @@ public class Modelo {
         return listaClientes;
     }
 
-    public static ArrayList<Proveedor> getListaProveedores(){
+    public static ArrayList<Proveedor> getListaProveedores() throws SQLException {
         saveProveedores();
         return listaProveedores;
     }
@@ -104,7 +100,7 @@ public class Modelo {
         return getListaClientes();
     }
 
-    public static ArrayList<Proveedor> addProveedor(String nombre){
+    public static ArrayList<Proveedor> addProveedor(String nombre) throws SQLException {
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor VALUES (?, ?)");
@@ -139,7 +135,7 @@ public class Modelo {
 
     }
 
-    public static ArrayList<Proveedor> removeProveedor(int idProveedor){
+    public static ArrayList<Proveedor> removeProveedor(int idProveedor) throws SQLException {
         Connection cn = Conexion.conectar();
         PreparedStatement pst = null;
         try {
@@ -173,7 +169,7 @@ public class Modelo {
         return getListaClientes();
     }
 
-    public static ArrayList<Proveedor> updateProveedor(int idProveedor, String nombre){
+    public static ArrayList<Proveedor> updateProveedor(int idProveedor, String nombre) throws SQLException {
 
         try {
             Connection cn = Conexion.conectar();
