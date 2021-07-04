@@ -1,8 +1,6 @@
 package main;
 
-import bbdd.Metadata;
 import vistas.Vista;
-import vistas.listaClientes.VistaListaClientesFrame;
 import vistas.principal.PrincipalFrame;
 
 import java.sql.SQLException;
