@@ -58,9 +58,6 @@ public class Modelo {
                 String nombre = String.valueOf(rs.getObject("nombre"));
                 listaProveedores.add(new Proveedor(id, nombre));
             }
-
-
-
         }catch (SQLException ex){
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }finally {

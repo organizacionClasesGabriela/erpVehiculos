@@ -13,9 +13,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <sonar.projectKey>organizacionClasesGabriela_erpVehiculos</sonar.projectKey>
-        <sonar.organization>organizacionclasesgabriela</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
