@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import controlador.Controlador;
@@ -27,8 +28,16 @@ public class VistaListaProveedores extends JPanel{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String nombre = String.valueOf(JOptionPane.showInputDialog("Introduce nombre"));
-                Controlador.agregarProveedor(nombre);//Tengo que terminar esto, I know
-                fillTable();
+                try {
+                    Controlador.agregarProveedor(nombre);//Tengo que terminar esto, I know
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                try {
+                    fillTable();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
         botonEliminar.addActionListener(new ActionListener() {
@@ -46,7 +55,7 @@ public class VistaListaProveedores extends JPanel{
         this.model.addColumn("Nombre");
     }
 
-    private void fillTable(){
+    private void fillTable() throws SQLException {
         ArrayList<Proveedor> listaProveedores = Controlador.getListaProveedores();
         model.setRowCount(0); //Esto era para limpiar la tabla
         for (Proveedor proveedor : listaProveedores) {

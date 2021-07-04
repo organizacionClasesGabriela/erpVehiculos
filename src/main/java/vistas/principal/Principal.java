@@ -7,6 +7,7 @@ import vistas.listaProveedores.VistaListaProveedoresFrame;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Principal extends JPanel{
     private JButton botonClientes;
@@ -42,7 +43,11 @@ public class Principal extends JPanel{
         botonClientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VistaListaClientesFrame();
+                try {
+                    new VistaListaClientesFrame();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
         botonProveedores.addActionListener(new ActionListener() {
