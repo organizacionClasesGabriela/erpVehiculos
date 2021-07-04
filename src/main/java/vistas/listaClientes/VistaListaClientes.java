@@ -42,7 +42,7 @@ public class VistaListaClientes extends JPanel{
         botonAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = String.valueOf(JOptionPane.showInputDialog("Introduce nombre"));
+                String nombre = String.valueOf(JOptionPane.showInputDialog("Introduce nombre"));//Cambiar por llamar a ventana
                 try {
                     Controlador.agregarCliente(nombre);
                 } catch (SQLException throwables) {
