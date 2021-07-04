@@ -59,10 +59,16 @@ public class Modelo {
                 listaProveedores.add(new Proveedor(id, nombre));
             }
 
-            cn.close();
+
 
         }catch (SQLException ex){
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            try {
+                cn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 
