@@ -54,7 +54,7 @@ public class Modelo {
     private static void saveProveedores() throws SQLException {
         Connection cn = Conexion.conectar();
         listaProveedores.clear();
-        String sql = "SELECT idProveedor, nombre FROM proveedor";
+        String sql = "SELECT * FROM proveedor";
 
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -63,6 +63,7 @@ public class Modelo {
             while (rs.next()) {
                 int id = Integer.parseInt(String.valueOf(rs.getObject("idProveedor")));
                 String nombre = String.valueOf(rs.getObject("nombre"));
+
                 listaProveedores.add(new Proveedor(id, nombre));
             }
         } catch (SQLException ex) {
