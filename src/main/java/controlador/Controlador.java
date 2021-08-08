@@ -19,8 +19,8 @@ public class Controlador {
         return Modelo.getListaClientes();
     }
 
-    public static ArrayList<Cliente> agregarCliente(String nombre) throws SQLException{
-        return Modelo.addCliente(nombre);
+    public static ArrayList<Cliente> agregarCliente(Cliente cliente) throws SQLException{
+        return Modelo.addCliente(cliente);
     }
 
     public static ArrayList<Cliente> removeCliente(int idCliente) throws SQLException{

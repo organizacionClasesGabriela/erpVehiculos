@@ -4,6 +4,7 @@ import Informes.InformeClientes;
 import com.itextpdf.text.DocumentException;
 import controlador.Controlador;
 import entidades.Cliente;
+import vistas.nuevoCliente.AgregarClienteFrame;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -42,9 +43,8 @@ public class VistaListaClientes extends JPanel{
         botonAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = String.valueOf(JOptionPane.showInputDialog("Introduce nombre"));//Cambiar por llamar a ventana
                 try {
-                    Controlador.agregarCliente(nombre);
+                    new AgregarClienteFrame();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

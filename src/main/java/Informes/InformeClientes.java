@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class InformeClientes {
 
-    public InformeClientes(){
+    public InformeClientes() {
 
     }
 
@@ -25,7 +25,7 @@ public class InformeClientes {
         String ruta = System.getProperty("user.home"); //Acceder al home del usuario
         PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Clientes.pdf"));
         Image header = Image.getInstance("src/main/resources/img/logo.png");
-        header.scaleToFit(650,70);
+        header.scaleToFit(650, 70);
         header.setAlignment(Chunk.ALIGN_LEFT);
 
         Paragraph parrafo = new Paragraph();
@@ -41,7 +41,7 @@ public class InformeClientes {
         tablaClientes.addCell("ID");
         tablaClientes.addCell("Nombre");
 
-        for(Cliente cliente : clientes){
+        for (Cliente cliente : clientes) {
             tablaClientes.addCell(String.valueOf(cliente.getIdCliente()));
             tablaClientes.addCell(cliente.getNombre());
         }
@@ -57,9 +57,6 @@ public class InformeClientes {
         /*PDDocument document = new PDDocument();
         document.save(System.getProperty("user.home") + "/Desktop/Clientes.pdf");
         document.close();*/
-
-        
-
 
 
     }
