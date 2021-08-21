@@ -76,7 +76,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Hasta la verga esta pinche vaina"/>
+        </properties>
       </component>
       <component id="69e60" class="javax.swing.JTextField" binding="nombreLegalTxt">
         <constraints>

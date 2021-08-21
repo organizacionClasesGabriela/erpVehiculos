@@ -9,8 +9,8 @@ public class Proveedor {
     private String email;
     private String telefono;
 
-    public Proveedor(int idProveedor, String nombre, String nombreLegal, String cif, String email, String telefono) {
-        this.idProveedor = idProveedor;
+    public Proveedor(/*int idProveedor,*/ String nombre, String nombreLegal, String cif, String email, String telefono) {
+        //this.idProveedor = idProveedor;
         this.nombre = nombre;
         this.nombreLegal = nombreLegal;
         this.cif = cif;

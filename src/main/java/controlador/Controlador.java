@@ -35,8 +35,8 @@ public class Controlador {
         return Modelo.getListaProveedores();
     }
 
-    public static ArrayList<Proveedor> agregarProveedor(String nombre) throws SQLException{
-        return Modelo.addProveedor(nombre);
+    public static ArrayList<Proveedor> agregarProveedor(Proveedor proveedor) throws SQLException{
+        return Modelo.addProveedor(proveedor);
     }
 
     public static ArrayList<Proveedor> removeProveedor(int idProveedor) throws SQLException{

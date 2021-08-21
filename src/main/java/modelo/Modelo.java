@@ -109,7 +109,7 @@ public class Modelo {
         return getListaClientes();
     }
 
-    public static ArrayList<Proveedor> addProveedor(String nombre) throws SQLException {
+    public static ArrayList<Proveedor> addProveedor(Proveedor proveedor) throws SQLException {
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor VALUES (?, ?)");
